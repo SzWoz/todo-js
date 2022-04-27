@@ -203,7 +203,7 @@ light.addEventListener("click", () => {
 
         setTimeout(() => {
             light.style.transform = "translateX(2.4em)";
-            dark.style.transform = "translateX(2.4em)";
+            dark.style.transform = "translateX(100%)";
 
             light.style.opacity = "0";
             dark.style.opacity = "1";

@@ -1,323 +1,394 @@
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap');
-:root{
+
+:root {
     --bg: hsl(235, 21%, 11%);
     --listBg: hsl(235, 24%, 19%);
     --textColor: hsl(234, 39%, 85%);
-    --hover: hsl(236, 33%, 92%); 
+    --hover: hsl(236, 33%, 92%);
     --completed: hsl(233, 14%, 35%);
     --border: hsl(234, 11%, 52%);
     --selection: hsl(220, 98%, 61%);
+    width: 100vw;
+
 }
 
-.light{
+.light {
     --bg: #FAFAFA;
     --listBg: #FFFFFF;
     --textColor: #656576;
-    --hover: hsl(235, 19%, 35%); 
+    --hover: hsl(235, 19%, 35%);
     --completed: hsl(236, 9%, 61%);
 
-    .bg-banner{
-        background: url(todo-app-main/images/bg-desktop-light.jpg)!important;
-        background-repeat: no-repeat!important;
-        background-size: cover!important;
-        height: 35vh!important;
-        flex-basis: 100%!important;
+    .bg-banner {
+        background: url(todo-app-main/images/bg-desktop-light.jpg) !important;
+        background-repeat: no-repeat !important;
+        background-size: cover !important;
+        height: 35vh !important;
+        flex-basis: 100% !important;
     }
 }
-body{   
+
+body {
     margin: 0;
     padding: 0;
     background-color: var(--bg);
     font-family: 'Josefin Sans', sans-serif;
-    
-    
-    
-.wrapper{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    min-height: 100%;
-    width: 100%;
-    position: relative;
+    width: 100vw;
 
-    .bg-banner{
-        background-image: url(todo-app-main/images/bg-desktop-dark.jpg);
-        background-repeat: no-repeat;
-        background-size: cover;
-        height: 35vh;
-        flex-basis: 100%;
-        
-    }
 
-    nav{
+    .wrapper {
         display: flex;
-        justify-content: space-between;
-        align-items: center;
-        width: 550px;
-        position: absolute;
-        transform: translateY(3rem);
-        font-size: 3.5rem;
-        color: white;
-        letter-spacing: 0.25em;
+        flex-wrap: wrap;
+        justify-content: center;
+        min-height: 100%;
+        width: 100%;
+        position: relative;
 
-        img{
-            width: 0.8em;
-        }
-        #dark-icon{
-            margin-left: 1em;
-            opacity: 0;
-        }
-        #light-icon{
-            cursor: pointer;
-        }
-        @keyframes light-in {
-            0%{
-                opacity: 0;
-            }
-            100%{
-                transform: translateX(0);
-                opacity: 1;
-            }
-        }
-        @keyframes dark-in{
-            0%{
-                opacity: 0;
-            }
-            100%{
-                transform: translateX(2.4em);
-                opacity: 1;
-            }
-        }
-        @keyframes light-out{
-            0%{
-                opacity: 1;
-            }
-            100%{
-                transform: translateX(2.4em);
-                opacity: 0;
-            }
-        }
-        @keyframes dark-out{
-            0%{
-                opacity: 1;
-            }
-            100%{
-                transform: translateX(0em);
-                opacity: 0;
-            }
-        }
-    }
+        .bg-banner {
+            background-image: url(todo-app-main/images/bg-desktop-dark.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: 35vh;
+            flex-basis: 100%;
 
-    .break{
-        flex-basis: 100%;
-    }
+        }
 
-    main{
-        
-        width: 550px;
-
-        .todo{
-            width: 100%;
+        nav {
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
-            font-size: 18px;
-            font-weight: 400;   
+            width: 550px;
+            position: absolute;
+            transform: translateY(3rem);
+            font-size: 3.5rem;
+            color: white;
+            letter-spacing: 0.25em;
 
-
-            input[type="checkbox"] {
-
-                -webkit-appearance: none;
-                appearance: none;
+            @media only screen and (max-width: 600px) {
+                & {
+                    width: 95vw;
+                    transform: translateY(1rem);
+                }
             }
-            
-            & .checkbox {
-                position: relative;
-                margin-right: 30px;
-                display: inline-block;
+
+            img {
+                width: 0.8em;
+            }
+
+            #dark-icon {
+                opacity: 0;
+            }
+
+            #light-icon {
                 cursor: pointer;
-                &::after {
-                   content: "";
-                   display: inline-block;
-                   width: 2em;
-                   height: 2em;
-                   border-radius: 50%;
-                   border: none;
-                   position: absolute;
-                //    transform: translate(-0.5em,-1em);
-                   transform: translate(0.1em, -1em);
+            }
 
-                   z-index: 10;
-                   transition: background 0s;
-                   background: var(--listBg);
+            @keyframes light-in {
+                0% {
+                    opacity: 0;
                 }
-                &::before {
-                   content: "";
-                   display: inline-block;
-                   width: 2.2em;
-                   height: 2.2em;
-                //    transform: translate(-0.59em,-1.09em);
-                   transform: translate(0, -1.1em);
 
-                   border-radius: 50%;
-                   position: absolute;
-                   
-                   // visibility: hidden;
-                   z-index: 5;
-                   background: var(--completed);
-                }
-                &:hover::before {
-                   background-image: linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%));
-                }
-          
-                &:checked::after {
-                   background: no-repeat url(todo-app-main/images/icon-check.svg) center/60%, linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%));
-                   
+                100% {
+                    transform: translateX(0);
+                    opacity: 1;
                 }
             }
-            .todo-enter{
-                flex-basis: 100%;
-                display: flex;
-                justify-content: space-around;
-                height: 2.5em;
-                align-items: center;
-                background: var(--listBg);
-                border-radius: 0.5em;
-                margin-top: -6em;
-                padding: 0.25em;
-                #text-input{
-                    width: 85%;
-                    height: 2.5em;
-                    background: transparent;
-                    border: none;
-                    color: var(--textColor);
-                    font-size: 1em;
-                    font-family: 'Josefin Sans', sans-serif;
-                    outline: none;
-                    z-index: 10;
+
+            @keyframes dark-in {
+                0% {
+                    opacity: 0;
+                }
+
+                100% {
+                    transform: translateX(100%);
+                    opacity: 1;
+                    margin-left: 0;
                 }
             }
-            .todo-el{
+
+            @keyframes light-out {
+                0% {
+                    opacity: 1;
+                }
+
+                100% {
+                    transform: translateX(2.4em);
+                    opacity: 0;
+                }
+            }
+
+            @keyframes dark-out {
+                0% {
+                    opacity: 1;
+                }
+
+                100% {
+                    transform: translateX(0em);
+                    opacity: 0;
+                }
+            }
+        }
+
+        .break {
+            flex-basis: 100%;
+        }
+
+        main {
+
+            width: 550px;
+
+            @media screen and (max-width: 600px) {
+                width: 95vw;
+            }
+
+            .todo {
                 width: 100%;
-                list-style-type: none;
-                padding: 0;
-                margin: 0;
                 display: flex;
-                flex-wrap: wrap;
+                justify-content: center;
                 align-items: center;
-                background: var(--listBg);
-                border-radius: 0.5em;
+                flex-wrap: wrap;
                 font-size: 18px;
-                border-radius: 0.5em;
-                box-shadow: 0px 0px 24px 0px rgba(0, 0, 0, 0.58);
+                font-weight: 400;
 
-                li{
+
+                input[type="checkbox"] {
+
+                    -webkit-appearance: none;
+                    appearance: none;
+                }
+
+                & .checkbox {
+                    position: relative;
+                    margin-right: 30px;
+                    display: inline-block;
+                    cursor: pointer;
+
+                    &::after {
+                        content: "";
+                        display: inline-block;
+                        width: 2em;
+                        height: 2em;
+                        border-radius: 50%;
+                        border: none;
+                        position: absolute;
+                        //    transform: translate(-0.5em,-1em);
+                        transform: translate(0.1em, -1em);
+
+                        z-index: 10;
+                        transition: background 0s;
+                        background: var(--listBg);
+                    }
+
+                    &::before {
+                        content: "";
+                        display: inline-block;
+                        width: 2.2em;
+                        height: 2.2em;
+                        //    transform: translate(-0.59em,-1.09em);
+                        transform: translate(0, -1.1em);
+
+                        border-radius: 50%;
+                        position: absolute;
+
+                        // visibility: hidden;
+                        z-index: 5;
+                        background: var(--completed);
+                    }
+
+                    &:hover::before {
+                        background-image: linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+                    }
+
+                    &:checked::after {
+                        background: no-repeat url(todo-app-main/images/icon-check.svg) center/60%, linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+
+                    }
+                }
+
+                .todo-enter {
                     flex-basis: 100%;
                     display: flex;
                     justify-content: space-around;
-                    align-items: center;                 
-                    height: 3em;
-                    border-bottom:1px solid var(--border);
-                    
-                    &:last-child{
-                        border-bottom: none;
-                    }
-                    
-                    p{
-                        width: 75%;
+                    height: 2.5em;
+                    align-items: center;
+                    background: var(--listBg);
+                    border-radius: 0.5em;
+                    margin-top: -6em;
+                    padding: 0.25em;
+
+                    #text-input {
+                        width: 85%;
+                        height: 2.5em;
+                        background: transparent;
+                        border: none;
                         color: var(--textColor);
-                        font-size: 18px;
-                    }
-
-                    .checkbox:checked ~ p{
-                        text-decoration: line-through;
-                        color: var(--completed);
-                    }
-                    span{
-                        transition: opacity .5s;
-                        opacity: 0;
-                        cursor: pointer;
-                    }
-                    &:hover span{
-                        opacity: 1;
-                    }
-                    .checkbox::after{
-                        transform: translate(0.1em, -1em);
-                    }
-                    .checkbox::before{
-                        transform: translate(0, -1.1em);
+                        font-size: 1em;
+                        font-family: 'Josefin Sans', sans-serif;
+                        outline: none;
+                        z-index: 10;
                     }
                 }
-                #footer{
-                   height: 2.5em;
-                   font-size: 0.9em;
-                    ul{
+
+                .todo-el {
+                    width: 100%;
+                    list-style-type: none;
+                    padding: 0;
+                    margin: 0;
                     display: flex;
-                    flex-basis: 100%;
-                    justify-content: space-between;
-                    padding: 0;
-                    color: var(--completed);  
-                    li{
-                        border: none;    
+                    flex-wrap: wrap;
+                    align-items: center;
+                    background: var(--listBg);
+                    border-radius: 0.5em;
+                    font-size: 18px;
+                    border-radius: 0.5em;
+                    box-shadow: 0px 0px 24px 0px rgba(0, 0, 0, 0.58);
 
-                    
-                    &:first-child, &:last-child{
-                        flex-basis: 40%;
-
-                        &:last-child{
-                            p{
-                                transition: color 0.3s ease;
-                            }
-                            p:hover{
-                                color: var(--hover);
-                                cursor: pointer;
-                            }
-                        }
-                    }
-                    
-                    
-                }
-                    .filter{
-                        display: flex;
-                    flex-basis: 80%;
-                    justify-content: space-evenly;
-                    padding: 0;
-                    
-                    li{
+                    li {
                         flex-basis: 100%;
-                        text-align: center;
+                        display: flex;
+                        justify-content: space-around;
+                        align-items: center;
+                        height: 3em;
+                        border-bottom: 1px solid var(--border);
 
-                        p{
-                            transition: color 0.3s ease;
+                        &:last-child {
+                            border-bottom: none;
                         }
-                        
 
-                        p:hover, p:focus{
-                            color: var(--hover)!important;
+                        p {
+                            width: 75%;
+                            color: var(--textColor);
+                            font-size: 18px;
+                        }
+
+                        .checkbox:checked~p {
+                            text-decoration: line-through;
+                            color: var(--completed);
+                        }
+
+                        span {
+                            transition: opacity .5s;
+                            opacity: 0;
                             cursor: pointer;
                         }
-                    }
-                    li:first-child{
-                        p{
-                            color: var(--selection);
+
+                        &:hover span {
+                            opacity: 1;
+                        }
+
+                        .checkbox::after {
+                            transform: translate(0.1em, -1em);
+                        }
+
+                        .checkbox::before {
+                            transform: translate(0, -1.1em);
                         }
                     }
-                    
+
+                    #footer {
+                        height: 2.5em;
+                        font-size: 0.9em;
+
+                        ul {
+                            display: flex;
+                            flex-basis: 100%;
+                            justify-content: space-between;
+                            padding: 0;
+                            color: var(--completed);
+
+                            @media screen and (max-width:600px) {
+                                & {
+                                    position: relative;
+                                }
+
+                                li:nth-child(2) {
+                                    position: absolute;
+                                    top: 60px;
+                                    width: 100%;
+                                    background-color: var(--listBg);
+                                    border-radius: .5em;
+                                }
+
+                                .filter {
+                                    width: 100%;
+
+                                    li {
+                                        max-width: 30%;
+
+                                        &:nth-child(2) {
+                                            position: static;
+                                        }
+                                    }
+                                }
+                            }
+
+                            li {
+                                border: none;
+
+
+
+                                &:first-child,
+                                &:last-child {
+                                    flex-basis: 40%;
+
+                                    &:last-child {
+                                        p {
+                                            transition: color 0.3s ease;
+                                        }
+
+                                        p:hover {
+                                            color: var(--hover);
+                                            cursor: pointer;
+                                        }
+                                    }
+                                }
+
+
+                            }
+
+                            .filter {
+                                display: flex;
+                                flex-basis: 80%;
+                                justify-content: space-evenly;
+                                padding: 0;
+
+                                li {
+                                    flex-basis: 100%;
+                                    text-align: center;
+
+                                    p {
+                                        color: var(--completed);
+                                        transition: color 0.3s ease;
+                                    }
+
+
+                                    p:hover,
+                                    p:focus {
+                                        color: var(--hover) !important;
+                                        cursor: pointer;
+                                    }
+                                }
+
+                                li:first-child {
+                                    p {
+                                        color: var(--selection);
+                                    }
+                                }
+
+                            }
+                        }
                     }
+
+
+                    .hidden {
+                        display: none;
+                    }
+
+
                 }
             }
-                
-
-            .hidden{
-                display: none;
-            }
-
-
-            }
         }
-    }
 
-    
-}
+
+    }
 }

@@ -7,6 +7,7 @@
   --completed: hsl(233, 14%, 35%);
   --border: hsl(234, 11%, 52%);
   --selection: hsl(220, 98%, 61%);
+  width: 100vw;
 }
 
 .light {
@@ -30,6 +31,7 @@ body {
   padding: 0;
   background-color: var(--bg);
   font-family: 'Josefin Sans', sans-serif;
+  width: 100vw;
 }
 
 body .wrapper {
@@ -61,12 +63,18 @@ body .wrapper nav {
   letter-spacing: 0.25em;
 }
 
+@media only screen and (max-width: 600px) {
+  body .wrapper nav {
+    width: 95vw;
+    transform: translateY(1rem);
+  }
+}
+
 body .wrapper nav img {
   width: 0.8em;
 }
 
 body .wrapper nav #dark-icon {
-  margin-left: 1em;
   opacity: 0;
 }
 
@@ -89,8 +97,9 @@ body .wrapper nav #light-icon {
     opacity: 0;
   }
   100% {
-    transform: translateX(2.4em);
+    transform: translateX(100%);
     opacity: 1;
+    margin-left: 0;
   }
 }
 
@@ -120,6 +129,12 @@ body .wrapper .break {
 
 body .wrapper main {
   width: 550px;
+}
+
+@media screen and (max-width: 600px) {
+  body .wrapper main {
+    width: 95vw;
+  }
 }
 
 body .wrapper main .todo {
@@ -271,6 +286,28 @@ body .wrapper main .todo .todo-el #footer ul {
   color: var(--completed);
 }
 
+@media screen and (max-width: 600px) {
+  body .wrapper main .todo .todo-el #footer ul {
+    position: relative;
+  }
+  body .wrapper main .todo .todo-el #footer ul li:nth-child(2) {
+    position: absolute;
+    top: 60px;
+    width: 100%;
+    background-color: var(--listBg);
+    border-radius: .5em;
+  }
+  body .wrapper main .todo .todo-el #footer ul .filter {
+    width: 100%;
+  }
+  body .wrapper main .todo .todo-el #footer ul .filter li {
+    max-width: 30%;
+  }
+  body .wrapper main .todo .todo-el #footer ul .filter li:nth-child(2) {
+    position: static;
+  }
+}
+
 body .wrapper main .todo .todo-el #footer ul li {
   border: none;
 }
@@ -301,10 +338,12 @@ body .wrapper main .todo .todo-el #footer ul .filter li {
 }
 
 body .wrapper main .todo .todo-el #footer ul .filter li p {
+  color: var(--completed);
   transition: color 0.3s ease;
 }
 
-body .wrapper main .todo .todo-el #footer ul .filter li p:hover, body .wrapper main .todo .todo-el #footer ul .filter li p:focus {
+body .wrapper main .todo .todo-el #footer ul .filter li p:hover,
+body .wrapper main .todo .todo-el #footer ul .filter li p:focus {
   color: var(--hover) !important;
   cursor: pointer;
 }
