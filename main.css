@@ -1,0 +1,319 @@
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap");
+:root {
+  --bg: hsl(235, 21%, 11%);
+  --listBg: hsl(235, 24%, 19%);
+  --textColor: hsl(234, 39%, 85%);
+  --hover: hsl(236, 33%, 92%);
+  --completed: hsl(233, 14%, 35%);
+  --border: hsl(234, 11%, 52%);
+  --selection: hsl(220, 98%, 61%);
+}
+
+.light {
+  --bg: #FAFAFA;
+  --listBg: #FFFFFF;
+  --textColor: #656576;
+  --hover: hsl(235, 19%, 35%);
+  --completed: hsl(236, 9%, 61%);
+}
+
+.light .bg-banner {
+  background: url(todo-app-main/images/bg-desktop-light.jpg) !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+  height: 35vh !important;
+  flex-basis: 100% !important;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg);
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+body .wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  min-height: 100%;
+  width: 100%;
+  position: relative;
+}
+
+body .wrapper .bg-banner {
+  background-image: url(todo-app-main/images/bg-desktop-dark.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 35vh;
+  flex-basis: 100%;
+}
+
+body .wrapper nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 550px;
+  position: absolute;
+  transform: translateY(3rem);
+  font-size: 3.5rem;
+  color: white;
+  letter-spacing: 0.25em;
+}
+
+body .wrapper nav img {
+  width: 0.8em;
+}
+
+body .wrapper nav #dark-icon {
+  margin-left: 1em;
+  opacity: 0;
+}
+
+body .wrapper nav #light-icon {
+  cursor: pointer;
+}
+
+@keyframes light-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes dark-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(2.4em);
+    opacity: 1;
+  }
+}
+
+@keyframes light-out {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(2.4em);
+    opacity: 0;
+  }
+}
+
+@keyframes dark-out {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(0em);
+    opacity: 0;
+  }
+}
+
+body .wrapper .break {
+  flex-basis: 100%;
+}
+
+body .wrapper main {
+  width: 550px;
+}
+
+body .wrapper main .todo {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+body .wrapper main .todo input[type="checkbox"] {
+  appearance: none;
+}
+
+body .wrapper main .todo .checkbox {
+  position: relative;
+  margin-right: 30px;
+  display: inline-block;
+  cursor: pointer;
+}
+
+body .wrapper main .todo .checkbox::after {
+  content: "";
+  display: inline-block;
+  width: 2em;
+  height: 2em;
+  border-radius: 50%;
+  border: none;
+  position: absolute;
+  transform: translate(0.1em, -1em);
+  z-index: 10;
+  transition: background 0s;
+  background: var(--listBg);
+}
+
+body .wrapper main .todo .checkbox::before {
+  content: "";
+  display: inline-block;
+  width: 2.2em;
+  height: 2.2em;
+  transform: translate(0, -1.1em);
+  border-radius: 50%;
+  position: absolute;
+  z-index: 5;
+  background: var(--completed);
+}
+
+body .wrapper main .todo .checkbox:hover::before {
+  background-image: linear-gradient(#57ddff, #c058f3);
+}
+
+body .wrapper main .todo .checkbox:checked::after {
+  background: no-repeat url(todo-app-main/images/icon-check.svg) center/60%, linear-gradient(#57ddff, #c058f3);
+}
+
+body .wrapper main .todo .todo-enter {
+  flex-basis: 100%;
+  display: flex;
+  justify-content: space-around;
+  height: 2.5em;
+  align-items: center;
+  background: var(--listBg);
+  border-radius: 0.5em;
+  margin-top: -6em;
+  padding: 0.25em;
+}
+
+body .wrapper main .todo .todo-enter #text-input {
+  width: 85%;
+  height: 2.5em;
+  background: transparent;
+  border: none;
+  color: var(--textColor);
+  font-size: 1em;
+  font-family: 'Josefin Sans', sans-serif;
+  outline: none;
+  z-index: 10;
+}
+
+body .wrapper main .todo .todo-el {
+  width: 100%;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  background: var(--listBg);
+  border-radius: 0.5em;
+  font-size: 18px;
+  border-radius: 0.5em;
+  box-shadow: 0px 0px 24px 0px rgba(0, 0, 0, 0.58);
+}
+
+body .wrapper main .todo .todo-el li {
+  flex-basis: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 3em;
+  border-bottom: 1px solid var(--border);
+}
+
+body .wrapper main .todo .todo-el li:last-child {
+  border-bottom: none;
+}
+
+body .wrapper main .todo .todo-el li p {
+  width: 75%;
+  color: var(--textColor);
+  font-size: 18px;
+}
+
+body .wrapper main .todo .todo-el li .checkbox:checked ~ p {
+  text-decoration: line-through;
+  color: var(--completed);
+}
+
+body .wrapper main .todo .todo-el li span {
+  transition: opacity .5s;
+  opacity: 0;
+  cursor: pointer;
+}
+
+body .wrapper main .todo .todo-el li:hover span {
+  opacity: 1;
+}
+
+body .wrapper main .todo .todo-el li .checkbox::after {
+  transform: translate(0.1em, -1em);
+}
+
+body .wrapper main .todo .todo-el li .checkbox::before {
+  transform: translate(0, -1.1em);
+}
+
+body .wrapper main .todo .todo-el #footer {
+  height: 2.5em;
+  font-size: 0.9em;
+}
+
+body .wrapper main .todo .todo-el #footer ul {
+  display: flex;
+  flex-basis: 100%;
+  justify-content: space-between;
+  padding: 0;
+  color: var(--completed);
+}
+
+body .wrapper main .todo .todo-el #footer ul li {
+  border: none;
+}
+
+body .wrapper main .todo .todo-el #footer ul li:first-child, body .wrapper main .todo .todo-el #footer ul li:last-child {
+  flex-basis: 40%;
+}
+
+body .wrapper main .todo .todo-el #footer ul li:first-child:last-child p, body .wrapper main .todo .todo-el #footer ul li:last-child:last-child p {
+  transition: color 0.3s ease;
+}
+
+body .wrapper main .todo .todo-el #footer ul li:first-child:last-child p:hover, body .wrapper main .todo .todo-el #footer ul li:last-child:last-child p:hover {
+  color: var(--hover);
+  cursor: pointer;
+}
+
+body .wrapper main .todo .todo-el #footer ul .filter {
+  display: flex;
+  flex-basis: 80%;
+  justify-content: space-evenly;
+  padding: 0;
+}
+
+body .wrapper main .todo .todo-el #footer ul .filter li {
+  flex-basis: 100%;
+  text-align: center;
+}
+
+body .wrapper main .todo .todo-el #footer ul .filter li p {
+  transition: color 0.3s ease;
+}
+
+body .wrapper main .todo .todo-el #footer ul .filter li p:hover, body .wrapper main .todo .todo-el #footer ul .filter li p:focus {
+  color: var(--hover) !important;
+  cursor: pointer;
+}
+
+body .wrapper main .todo .todo-el #footer ul .filter li:first-child p {
+  color: var(--selection);
+}
+
+body .wrapper main .todo .todo-el .hidden {
+  display: none;
+}
+/*# sourceMappingURL=main.css.map */

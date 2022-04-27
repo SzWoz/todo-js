@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="main.css">
+    <title>Document</title>
+</head>
+
+<body class="">
+    <div class="wrapper">
+        <div class="bg-banner"></div>
+        <nav>
+            <p>TODO</p>
+
+            <img id="dark-icon" src="todo-app-main/images/icon-moon.svg" alt="dark-theme">
+            <img id="light-icon" src="todo-app-main/images/icon-sun.svg" alt="light-theme">
+        </nav>
+        <div class="break"></div>
+        <main>
+
+            <div class="todo">
+                <div class="todo-enter">
+                    <input type="checkbox" class="checkbox" disabled>
+                    <input type="text" id="text-input" placeholder="Create TODO!">
+                </div>
+                <ul class="todo-el">
+
+
+
+
+
+
+                    <li id="footer" class="footer">
+                        <ul>
+                            <li id="item-counter"></li>
+                            <li>
+                                <ul class="filter">
+                                    <li>
+                                        <p id="all">all</p>
+                                    </li>
+                                    <li>
+                                        <p id="active">active</p>
+                                    </li>
+                                    <li>
+                                        <p id="completed">completed</p>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <p id="clear-completed">Clear completed</p>
+                            </li>
+                        </ul>
+                    </li>
+
+                </ul>
+
+            </div>
+        </main>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+    <script type="module" src="index.js"></script>
+</body>
+
+</html>
