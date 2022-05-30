@@ -1,7 +1,7 @@
 # Summary
 
 This is side project to leran JavaScipt from Frontend mentor.
-Its main purpose is to create todo elements, that are saved to local storage.
+Its main purpose is to create todo elements, that are saved to local storage. Built with Html, JavaScript and SCSS
 <br>Link to Frontend mentor: https://www.frontendmentor.io/challenges/todo-app-Su1_KokOW
 ## Screen Shot
 
